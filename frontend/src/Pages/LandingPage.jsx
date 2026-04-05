@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
@@ -14,13 +15,15 @@ import Testimonial from '../components/Testimonial'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 
+
 const LandingPage = () => {
   const location = useLocation();
-  const hasScrolled = useRef(false); // ✅ prevent repeat
+  const navigate = useNavigate();
+  const hasScrolled = useRef(false);
 
   useEffect(() => {
     if (location.state?.scrollTo && !hasScrolled.current) {
-      hasScrolled.current = true; // ✅ run only once
+      hasScrolled.current = true;
 
       const id = location.state.scrollTo;
 
@@ -29,6 +32,10 @@ const LandingPage = () => {
 
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
+
+          // ✅ CLEAR STATE AFTER USE
+          navigate(location.pathname, { replace: true, state: {} });
+
         } else {
           requestAnimationFrame(scrollToElement);
         }
@@ -36,7 +43,8 @@ const LandingPage = () => {
 
       scrollToElement();
     }
-  }, [location]);
+  }, [location, navigate]);
+
 
   return (
     <div>
