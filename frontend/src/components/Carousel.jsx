@@ -8,7 +8,7 @@ import l3 from "../assets/img/logo3.svg"
 import l4 from "../assets/img/logo4.svg"
 import l5 from "../assets/img/logo5.svg"
 
-const Item = [l1, l2, l3, l4, l5];
+const Item = [l1, l2, l3, l4, l5 ,l3];
 
 const Carousel = () => {
 
