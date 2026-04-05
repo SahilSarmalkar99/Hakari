@@ -40,7 +40,6 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Navbar />
 
       <Hero />
 

@@ -3,21 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { blogData } from "../data/blogData";
 import useTextReveal from "../hooks/useTextReveal";
 
-
 const BlogsContent = () => {
   const navigate = useNavigate();
   const textRef = useTextReveal();
 
   return (
-    <div  className="px-6 py-20  bg-[#f5f5f5] min-h-screen">
-      
+    <div className="px-6 py-20  bg-[#f5f5f5] min-h-screen">
       {/* HEADER */}
       <div className="text-center mb-16 mt-10">
         <h1 ref={textRef} className="text-5xl font-[font2]  mb-4">
           INSIGHTS TO GO VIRAL
         </h1>
         <p className="text-gray-500 font-[font3] font-bold max-w-xl mx-auto">
-          Practical tips, proven strategies, and behind-the-scenes lessons on creating short-form content that converts.
+          Practical tips, proven strategies, and behind-the-scenes lessons on
+          creating short-form content that converts.
         </p>
       </div>
 
@@ -32,9 +31,10 @@ const BlogsContent = () => {
             {/* IMAGE */}
             <div className="overflow-hidden rounded-xl">
               <img
-                src={blog.image}
+                src={`${blog.image}?w=800&q=80`} // 🔥 compress
+                loading="lazy"
                 alt=""
-                className="w-full h-[220px] object-cover group-hover:scale-105 transition duration-500"
+                className="w-full h-[220px] object-covergroup-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
 
