@@ -1,0 +1,111 @@
+.tagcarousel-simple {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1200px;
+  height: 160px;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 2rem;
+
+  perspective: 1000px;
+}
+
+/* SCROLL GROUP */
+.group-simple,
+.group-reverse-simple {
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: center;
+  animation: scroll 35s linear infinite;
+  min-width: max-content;
+}
+
+.group-reverse-simple {
+  animation-direction: reverse;
+}
+
+/* TAG STYLE */
+.tag-simple {
+  flex: 0 0 auto;
+
+  padding: clamp(8px, 1.2vw, 16px) clamp(14px, 2vw, 28px);
+
+  font-size: clamp(12px, 1.2vw, 18px);
+  letter-spacing: 1px;
+  white-space: nowrap;
+
+  color: #fff;
+
+  border: 2px dotted rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotateY(20deg) rotateX(5deg);
+  transition: all 0.35s ease;
+}
+
+/* HOVER EFFECT */
+.tag-simple:hover {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* SCROLL ANIMATION */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  .tagcarousel-simple {
+    height: 120px;
+    gap: 1rem;
+  }
+
+  .tag-simple {
+    font-size: 11px;
+    padding: 6px 12px;
+    transform: none; /* remove 3D tilt for mobile */
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+  .tagcarousel-simple {
+    height: 100px;
+  }
+
+  .group-simple,
+  .group-reverse-simple {
+    animation-duration: 25s; /* faster scroll on small screens */
+  }
+}
